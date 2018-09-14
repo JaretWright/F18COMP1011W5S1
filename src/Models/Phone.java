@@ -2,6 +2,10 @@ package Models;
 
 import javafx.scene.image.Image;
 
+import java.lang.reflect.Array;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Phone {
     private String make;
     private String model, os;
@@ -29,7 +33,16 @@ public class Phone {
     }
 
     public void setMake(String make) {
-        this.make = make;
+        ArrayList<String> validMakes = null;
+        try {
+            validMakes = DBConnect.getPhoneManufacturers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (validMakes.contains(make))
+            this.make = make;
+        else
+            throw new IllegalArgumentException("Make must be one of "+ validMakes);
     }
 
     public String getModel() {
@@ -37,7 +50,9 @@ public class Phone {
     }
 
     public void setModel(String model) {
-        this.model = model;
+        if (!model.isEmpty() && model.length() <30)
+            this.model = model;
+        throw new IllegalArgumentException("Model name must be 0-30 characters");
     }
 
     public String getOs() {
@@ -45,7 +60,10 @@ public class Phone {
     }
 
     public void setOs(String os) {
-        this.os = os;
+        if (os.equals("iOS") || os.equals("Android") || os.equals("Blackberry"))
+            this.os = os;
+        else
+            throw new IllegalArgumentException("OS must be iOS, Android or Blackberry");
     }
 
     public double getScreenSize() {
@@ -53,7 +71,10 @@ public class Phone {
     }
 
     public void setScreenSize(double screenSize) {
-        this.screenSize = screenSize;
+        if (screenSize>0 && screenSize<1000)
+            this.screenSize = screenSize;
+        else
+            throw new IllegalArgumentException("screen size must be 0-1000");
     }
 
     public double getMemory() {
@@ -61,7 +82,10 @@ public class Phone {
     }
 
     public void setMemory(double memory) {
-        this.memory = memory;
+        if (memory>0 && memory<=512)
+            this.memory = memory;
+        else
+            throw new IllegalArgumentException("Memory must be 0-512");
     }
 
     public double getFrontCameraRes() {
@@ -69,7 +93,10 @@ public class Phone {
     }
 
     public void setFrontCameraRes(double frontCameraRes) {
-        this.frontCameraRes = frontCameraRes;
+        if (frontCameraRes>=0 && frontCameraRes<100)
+            this.frontCameraRes = frontCameraRes;
+        else
+            throw new IllegalArgumentException("Front Camera resolution should be 0-100");
     }
 
     public double getRearCameraRes() {
@@ -77,7 +104,10 @@ public class Phone {
     }
 
     public void setRearCameraRes(double rearCameraRes) {
-        this.rearCameraRes = rearCameraRes;
+        if (rearCameraRes>=0 && rearCameraRes<=100)
+            this.rearCameraRes = rearCameraRes;
+        else
+            throw new IllegalArgumentException("Rear camera Resolution must be 0-100");
     }
 
     public double getPrice() {
@@ -85,7 +115,10 @@ public class Phone {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price>=0 && price < 10000)
+            this.price = price;
+        else
+            throw new IllegalArgumentException("Price must be 0-10000");
     }
 
     public Image getImage() {
