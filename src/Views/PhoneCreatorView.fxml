@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.PhoneCreatorView">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PhoneCreatorViewController">
    <children>
       <HBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -71,7 +70,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="makeChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>
