@@ -84,4 +84,39 @@ public class DBConnect {
 
         return manufacturers;
     }
+
+    public static String getOSForManufacturer(String manufacturer)
+    {
+        String os = null;
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+
+        try{
+            //1. try to connect with the DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phones?useSSL=false",
+                            userName, password);
+
+            //2. create a sql statement
+            String sql = "SELECT os FROM manufacturers WHERE manufacturer=?";
+
+            //3.  create the prepared statement
+            ps = conn.prepareStatement(sql);
+
+            //4.  bind values to the parameters
+            ps.setString(1, manufacturer);
+
+            //5.  get the results
+            resultSet=ps.executeQuery();
+
+            //6.  loop over the result(s)
+            resultSet.next();
+            os = resultSet.getString("os");
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        return os;
+    }
 }
