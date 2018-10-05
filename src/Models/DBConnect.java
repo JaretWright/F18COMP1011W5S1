@@ -22,7 +22,7 @@ public class DBConnect {
             statement = conn.createStatement();
 
             //3.  create and execute the query
-            resultSet = statement.executeQuery("SELECT * FROM manufacturers");
+            resultSet = statement.executeQuery("SELECT * FROM manufacturers ORDER BY manufacturer");
 
             //4.  loop over the results and add to the ArrayList
             while (resultSet.next())
