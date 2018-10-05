@@ -126,7 +126,8 @@ public class DBConnect {
 
         try{
             //1.  Connect to the DB
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phones?useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phones?useSSL=false",
+                    userName, password);
 
             //2.  create a sql statement
             String sql = "INSERT INTO phones (make, model, os, screenSize, memory,frontCamRes," +
