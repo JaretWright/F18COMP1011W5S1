@@ -51,9 +51,17 @@ public class PhoneCreatorViewController implements Initializable {
                                 makeChoiceBox.getValue(),
                                 modelTextField.getText(),
                                 osChoiceBox.getValue(),
-                                Double.parseDouble(screenSizeTextField.getText()));
+                                Double.parseDouble(screenSizeTextField.getText()),
+                                Double.parseDouble(memoryTextField.getText()),
+                                Double.parseDouble(frontCameraResTextField.getText()),
+                                Double.parseDouble(rearCameraResTextField.getText()));
 
         System.out.printf("New Phone: %s%n", newPhone);
+        try {
+            DBConnect.insertPhoneIntoDB(newPhone);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

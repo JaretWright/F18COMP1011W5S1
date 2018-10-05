@@ -12,18 +12,19 @@ public class Phone {
     private double screenSize, memory, frontCameraRes, rearCameraRes, price;
     private Image image;
 
-    public Phone(String make, String model, String os, double screenSize) {
+    public Phone(String make, String model, String os, double screenSize, double memory,
+                        double frontCameraRes, double rearCameraRes) {
         setMake(make);
         setModel(model);
         setOs(os);
         setScreenSize(screenSize);
-    }
-
-    public Phone(String make, String model, String os, double screenSize, double memory, double frontCameraRes, double rearCameraRes, double price, Image image) {
-        this(make, model, os, screenSize);
         setMemory(memory);
         setFrontCameraRes(frontCameraRes);
         setRearCameraRes(rearCameraRes);
+    }
+
+    public Phone(String make, String model, String os, double screenSize, double memory, double frontCameraRes, double rearCameraRes, double price, Image image) {
+        this(make, model, os, screenSize,memory, frontCameraRes, rearCameraRes);
         setPrice(price);
         setImage(image);
     }
