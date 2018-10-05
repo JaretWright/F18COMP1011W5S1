@@ -119,4 +119,43 @@ public class DBConnect {
         }
         return os;
     }
+
+    public static void insertPhoneIntoDB(Phone newPhone) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try{
+            //1.  Connect to the DB
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phones?useSSL=false");
+
+            //2.  create a sql statement
+            String sql = "INSERT INTO phones (make, model, os, screenSize, memory,frontCamRes," +
+                    "rearCamRes) VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+            //3. create a prepared statement
+            ps = conn.prepareStatement(sql);
+
+            //4.  bind the paramters
+            ps.setString(1, newPhone.getMake());
+            ps.setString(2, newPhone.getModel());
+            ps.setString(3, newPhone.getOs());
+            ps.setDouble(4, newPhone.getScreenSize());
+            ps.setDouble(5, newPhone.getMemory());
+            ps.setDouble(6, newPhone.getFrontCameraRes());
+            ps.setDouble(7, newPhone.getRearCameraRes());
+
+            //5.  execute the update
+            ps.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        finally {
+            if (conn != null)
+                conn.close();
+            if(ps != null)
+                ps.close();
+        }
+    }
 }

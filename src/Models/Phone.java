@@ -50,9 +50,11 @@ public class Phone {
     }
 
     public void setModel(String model) {
+
         if (!model.isEmpty() && model.length() <30)
             this.model = model;
-        throw new IllegalArgumentException("Model name must be 0-30 characters");
+        else
+            throw new IllegalArgumentException("Model name must be 0-30 characters");
     }
 
     public String getOs() {
