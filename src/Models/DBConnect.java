@@ -159,4 +159,51 @@ public class DBConnect {
                 ps.close();
         }
     }
+
+    public static ArrayList<Phone> getAllPhones() throws SQLException {
+        ArrayList<Phone> phones = new ArrayList<>();
+        Connection conn = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try{
+            //1. connect to the database
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/phones?useSSL=false",
+                    userName, password);
+
+            //2.  Create a statement object
+            statement = conn.createStatement();
+
+            //3.  create and execute the query
+            resultSet = statement.executeQuery("SELECT * FROM phones");
+
+            //4.  loop over the results and add to the ArrayList
+            while (resultSet.next())
+            {
+                phones.add(new Phone(resultSet.getString("make"),
+                                     resultSet.getString("model"),
+                                     resultSet.getString("os"),
+                                     resultSet.getDouble("screenSize"),
+                                     resultSet.getDouble("memory"),
+                                     resultSet.getDouble("frontCamRes"),
+                                     resultSet.getDouble("rearCamRes")));
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e);
+        }
+        finally {
+            if (conn != null)
+                conn.close();
+            if (statement != null)
+                statement.close();
+            if (resultSet != null)
+                resultSet.close();
+        }
+
+        return phones;
+    }
+
+
 }
