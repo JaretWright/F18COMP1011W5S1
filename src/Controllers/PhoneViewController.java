@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PhoneViewController implements Initializable {
+public class PhoneViewController implements Initializable, PhoneLoaderInterface {
 
     @FXML
     private Label makeLabel;

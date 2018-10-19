@@ -1,6 +1,8 @@
 package Controllers;
 
 import java.io.IOException;
+
+import Models.Phone;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,6 +27,30 @@ public class SceneChanger {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * This method allows the user to change scenes and pass a Phone object
+     * into the new scene
+     */
+    public static void changeScenes(ActionEvent event, String viewName, String title,
+                                    Phone phone) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(new Object(){}.getClass().getResource(viewName));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+
+        //access the controller class and load the Phone object
+        PhoneLoaderInterface controller = loader.getController();
+        controller.loadPhone(phone);
+
+        //get the Stage and set the scene/show
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setTitle("Phone View");
         stage.setScene(scene);
         stage.show();
     }

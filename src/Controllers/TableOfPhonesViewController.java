@@ -61,21 +61,8 @@ public class TableOfPhonesViewController implements Initializable {
         //check to ensure that a phone was selected before changing scenes
         if (phoneSelected != null)
         {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../Views/PhoneView.fxml"));
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-
-            //access the controller class and load the Phone object
-            PhoneViewController controller = loader.getController();
-            controller.loadPhone(phoneSelected);
-
-            //get the Stage and set the scene/show
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setTitle("Phone View");
-            stage.setScene(scene);
-            stage.show();
+            SceneChanger.changeScenes(event,"../Views/PhoneView.fxml","Single Phone",
+                                        phoneSelected);
         }
     }
 }
