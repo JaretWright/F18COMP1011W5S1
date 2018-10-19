@@ -62,7 +62,7 @@ public class TableOfPhonesViewController implements Initializable {
         if (phoneSelected != null)
         {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Views/PhoneView.fxml"));
+            loader.setLocation(getClass().getResource("../Views/PhoneView.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

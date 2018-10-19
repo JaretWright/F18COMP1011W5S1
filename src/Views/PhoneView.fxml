@@ -34,7 +34,7 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="modelLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="22.0" />
                </font></Label>
@@ -42,21 +42,21 @@
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label text="Label" GridPane.columnIndex="1">
+            <Label fx:id="makeLabel" text="Label" GridPane.columnIndex="1">
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="memoryLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="22.0" />
                </font></Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="osLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="22.0" />
                </font></Label>
          </children>
       </GridPane>
-      <Button layoutX="263.0" layoutY="304.0" mnemonicParsing="false" text="Back">
+      <Button layoutX="263.0" layoutY="304.0" mnemonicParsing="false" onAction="#backToTableView" text="Back">
          <font>
             <Font size="22.0" />
          </font></Button>
