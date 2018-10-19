@@ -29,16 +29,7 @@ public class TableOfPhonesViewController implements Initializable {
     private TableColumn<Phone, String> osColumn;
 
     @FXML
-    private TableColumn<Phone, Double> screenSizeColumn;
-
-    @FXML
     private TableColumn<Phone, Integer> memoryColumn;
-
-    @FXML
-    private TableColumn<Phone, Double> priceColumn;
-
-    @FXML
-    private TableColumn<Phone, Image> imageColumn;
 
 
     @Override
@@ -47,7 +38,6 @@ public class TableOfPhonesViewController implements Initializable {
         makeColumn.setCellValueFactory(new PropertyValueFactory<Phone, String>("make"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<Phone, String>("model"));
         osColumn.setCellValueFactory(new PropertyValueFactory<Phone, String>("os"));
-        screenSizeColumn.setCellValueFactory(new PropertyValueFactory<Phone, Double>("screenSize"));
         memoryColumn.setCellValueFactory(new PropertyValueFactory<Phone, Integer>("memory"));
 
 //        try {
